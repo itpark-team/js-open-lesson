@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: #ffd54f;
+        font-family: cursive;
+        font-size: 12px;
+      }
+      div {
+        /* border: 1px solid #000; */
+        width: 220px;
+        margin: 0 auto;
+      }
+      input,
+      label {
+        border: 1px solid #ffa000;
+        width: 160px;
+        height: 22px;
+        outline: none;
+        background-color: white;
+        padding: 1px;
+        display: inline-block;
+      }
+      button,
+      label {
+        cursor: pointer;
+      }
+      input + button {
+        border: 2px solid #f57c00;
+        background-color: #f57c00;
+        outline: none;
+        color: white;
+        transition: 0.5s;
+      }
+      input + button:hover {
+        transform: rotate(180deg);
+        color: #4400ff;
+      }
+      label + button {
+        background-color: #ffd54f;
+        border: none;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        margin-bottom: 3px;
+      }
+      label:hover {
+        background-color: #f3db86;
+        color: brown;
+      }
+      img {
+        border-radius: 5px;
+        float: left;
+        margin-right: 10px;
+        /* display: block; */
+        /* margin-left: 60px; */
+        transition: 0.5s;
+      }
+      img:hover {
+        transform: scale(2);
+      }
+      a {
+        float: right;
+        /* margin-left: 45px; */
+        /* vertical-align: 25px; */
+      }
+      .done {
+        text-decoration: line-through;
+        background-color: #66bb6a;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>Я хочу изучить...</h2>
+      <input type="text" name="task" placeholder="Введите задачу" />
+      <button onclick="addTask()">+</button>
+      <ul>
+        <!-- <li>
+          <label>Text</label>
+          <button>&#10060;</button>
+        </li>
+        <li>
+          <label>Text</label>
+          <button>&#10060;</button>
+        </li>
+        <li>
+          <label>Text</label>
+          <button>&#10060;</button>
+        </li>
+        <li>
+          <label>Text</label>
+          <button>&#10060;</button>
+        </li> -->
+      </ul>
+      <img
+        src="https://quasi-art.ru/assets/components/phpthumbof/cache/it-cat.077a97d6b2536e944a85f8d68548b961.jpg"
+        width="50"
+        height="50"
+      />
+      <i>Хочешь стать крутым веб-программистом, присоединяйся к нам</i>
+      <br />
+      <a href="https://vk.com/itpark32"> - Хочу, хочу!!!</a>
+    </div>
+    <script>
+      function addTask() {
+        let task = document.querySelector("input").value;
+        let listItem = `
+        <li>
+          <label onclick="checkDone(this)">${task}</label>
+          <button onclick="deleteTask(this)">&#10060;</button>
+        </li>
+        `;
+        let list = document.querySelector("ul");
+        list.innerHTML = list.innerHTML + listItem;
+      }
+
+      function deleteTask(btn) {
+        let listItem = btn.parentElement;
+        listItem.remove();
+      }
+      function checkDone(task) {
+        // task.style.textDecoration = "line-through";
+        // task.style.backgroundColor = "#66bb6a";
+        task.classList.toggle("done");
+      }
+    </script>
+  </body>
+</html>
